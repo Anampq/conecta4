@@ -1,0 +1,39 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    color: #333;
+    margin: 20px 0;
+  }
+  
+  /* Board styles */
+  #board {
+    display: grid;
+    grid-template-columns: repeat(7, 50px);
+    gap: 5px;
+    justify-content: center;
+    background-color: #0055a4;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .cell {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    display: inline-block;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  
+  .cell:hover {
+    background-color: #ddd;
+  }
+  
