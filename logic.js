@@ -48,9 +48,9 @@ function transitionTo(newState) {
 }
 
 // Detectar clic en columna
-document.getElementById('board').addEventListener('click', (e) => {
-  if (e.target.classList.contains('cell')) {
-    const col = Number(e.target.dataset.col);
+document.getElementById('board').addEventListener('click', (event) => {
+  if (event.target.classList.contains('cell')) {
+    const col = Number(event.target.dataset.col);
     if (gameStates[currentState]?.onColumnClick) {
       gameStates[currentState].onColumnClick(col);
     }
@@ -158,3 +158,7 @@ function renderBoard() {
 // Iniciar el juego
 transitionTo('INIT');
 
+// Selecciona el botón de reinicio
+document.getElementById('restartButton').addEventListener('click', () => {
+    transitionTo('INIT');
+})
