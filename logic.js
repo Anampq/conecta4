@@ -2,6 +2,9 @@
 let board = Array.from({ length: 6 }, () => Array(7).fill(null));
 let currentPlayer = 'R'; // Jugador actual ('R' o 'Y')
 let currentState = null; // Estado actual del juego
+document.addEventListener('DOMContentLoaded', () => {
+    transitionTo('INIT');
+});
 
 // Estados del juego
 const gameStates = {
@@ -34,10 +37,30 @@ const gameStates = {
     END: {
         enter: () => {
             console.log("Juego terminado.");
-            alert(`${currentPlayer} ganó!`);
+    
+            // Reproduce el sonido del ganador
+            const winnerSound = document.getElementById('winnerSound');
+            if (winnerSound) {
+                winnerSound.play().catch((error) => {
+                    console.error("Error al reproducir el sonido:", error);
+                });
+            } else {
+                console.error("No se encontró el audio con ID 'winnerSound'");
+            }
+    
+            // Usa síntesis de voz para anunciar al ganador
+            const winnerMessage = currentPlayer === 'R' ? 'RED' : 'YELLOW';
+            const utterance = new SpeechSynthesisUtterance(winnerMessage);
+            speechSynthesis.speak(utterance);
+    
+            alert(`${currentPlayer === 'R' ? 'Rojo' : 'Amarillo'} ganó!`);
+    
             setTimeout(() => transitionTo('INIT'), 2000);
         }
     }
+    
+    
+    
 };
 
 // Cambiar de estado

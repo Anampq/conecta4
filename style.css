@@ -58,3 +58,59 @@ h1 {
 #restartButton:hover {
     background-color: #0056b3;
 }
+
+/* Centrar el contenedor de login */
+#login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    background-color: #f5f5f5; /* Fondo claro */
+}
+
+/* Estilo del formulario */
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para los campos de entrada */
+#login-form input[type="text"], 
+#login-form input[type="password"] {
+    margin: 10px 0;
+    padding: 10px;
+    width: 250px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilo para el botón "Entrar" (ya existente, pero integrado aquí) */
+#login-form button {
+    padding: 10px;
+    background-color: #007bff; /* Mismo color que el botón Reset */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#login-form button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+}
+
+/* Estilo para el mensaje de error */
+#error-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+}
