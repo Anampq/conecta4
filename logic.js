@@ -81,11 +81,13 @@ document.getElementById('board').addEventListener('click', (event) => {
 function dropPiece(col) {
     for (let row = board.length - 1; row >= 0; row--) {
         if (!board[row][col]) {
-            board[row][col] = currentPlayer;
-            renderBoard();
-            setTimeout(() => {
-                transitionTo('CHECK_WINNER');
-            }, 10); // Retraso para pintar la celda correctamente
+            animatePiece(row, col, currentPlayer, () => {
+                board[row][col] = currentPlayer;
+                renderBoard();
+                setTimeout(() => {
+                    transitionTo('CHECK_WINNER');
+                }, 10); // Retraso para pintar la celda correctamente
+            });
             return;
         }
     }
