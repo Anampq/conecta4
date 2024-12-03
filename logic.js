@@ -54,13 +54,10 @@ const gameStates = {
             speechSynthesis.speak(utterance);
     
             alert(`${currentPlayer === 'R' ? 'Rojo' : 'Amarillo'} ganó!`);
-    
+
             setTimeout(() => transitionTo('INIT'), 2000);
         }
     }
-    
-    
-    
 };
 
 // Cambiar de estado
@@ -92,7 +89,45 @@ function dropPiece(col) {
             return;
         }
     }
-  alert('Columna llena');
+    alert('Columna llena');
+}
+
+// Animar ficha
+function animatePiece(row, col, player, callback) {
+    const boardElement = document.getElementById('board');
+    const cell = document.querySelector(`.cell[data-row="0"][data-col="${col}"]`);
+    const cellRect = cell.getBoundingClientRect();
+    const boardRect = boardElement.getBoundingClientRect();
+
+    const cellSize = cellRect.width;
+    const startX = cellRect.left - boardRect.left;
+    const startY = -cellSize;
+    const endY = (row + 1)*cellSize;
+
+    // Crear la ficha animada
+    const pieceDiv = document.createElement('div');
+    pieceDiv.classList.add('piece');
+    pieceDiv.style.backgroundColor = player === 'R' ? 'red' : 'yellow';
+    pieceDiv.style.position = 'absolute';
+    pieceDiv.style.left = `${startX}px`;
+    pieceDiv.style.top = `${startY}px`;
+    boardElement.appendChild(pieceDiv);
+
+    // Animar la ficha
+    let currentY = startY;
+    function animate() {
+        if (currentY < endY) {
+            currentY += 5; // Velocidad de la animación
+            pieceDiv.style.top = `${currentY}px`;
+            requestAnimationFrame(animate);
+        } else {
+            // Finaliza la animación
+            pieceDiv.style.top = `${endY}px`;
+            callback();
+            pieceDiv.remove();
+        }
+    }
+    animate();
 }
 
 // Verificar ganador
