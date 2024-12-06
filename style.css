@@ -1,4 +1,10 @@
-/* General styles */
+#game-container {
+    display: none; /* Oculto*/
+}
+
+#login-container {
+    display: flex; /* Visible*/
+}
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -162,3 +168,24 @@ h1 {
     font-size: 14px;
     color: red;
 }
+
+#turn-indicator {
+    position: fixed; /* Fijo para centrarlo en la ventana */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrar en ambas direcciones */
+    padding: 15px 30px;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000; /* Asegura que esté encima de otros elementos */
+    animation: fadeOut 4s forwards; /* Cambia a 4 segundos para desaparecer */
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+

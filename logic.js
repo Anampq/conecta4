@@ -2,9 +2,7 @@
 let board = Array.from({ length: 6 }, () => Array(7).fill(null));
 let currentPlayer = 'R'; // Jugador actual ('R' o 'Y')
 let currentState = null; // Estado actual del juego
-document.addEventListener('DOMContentLoaded', () => {
-    transitionTo('INIT');
-});
+
 
 // Estados del juego
 const gameStates = {
@@ -16,14 +14,18 @@ const gameStates = {
             transitionTo('PLAYER_TURN');
         }
     },
+  
     PLAYER_TURN: {
         enter: () => {
             console.log(`Turno del jugador: ${currentPlayer}`);
+            const message = currentPlayer === 'R' ? 'AHORA ES EL TURNO DE ROJO' : 'AHORA ES EL TURNO DE AMARILLO';
+            showTurnMessage(message);
         },
         onColumnClick: (col) => {
             dropPiece(col);
         }
     },
+    
     CHECK_WINNER: {
         enter: () => {
             if (checkWinner()) {
@@ -40,26 +42,39 @@ const gameStates = {
     
             // Reproduce el sonido del ganador
             const winnerSound = document.getElementById('winnerSound');
+            const redSound = document.getElementById('redSound');
+            const yellowSound = document.getElementById('yellowSound');
+            
+            
             if (winnerSound) {
-                winnerSound.play().catch((error) => {
-                    console.error("Error al reproducir el sonido:", error);
-                });
-            } else {
-                console.error("No se encontró el audio con ID 'winnerSound'");
-            }
-    
-            // Usa síntesis de voz para anunciar al ganador
-            const winnerMessage = currentPlayer === 'R' ? 'RED' : 'YELLOW';
-            const utterance = new SpeechSynthesisUtterance(winnerMessage);
-            speechSynthesis.speak(utterance);
-    
-            alert(`${currentPlayer === 'R' ? 'Rojo' : 'Amarillo'} ganó!`);
-
-            setTimeout(() => transitionTo('INIT'), 2000);
+                winnerSound.play();
+                
+                winnerSound.onended = () => {
+                    const colorSound = currentPlayer === 'R' ? redSound: yellowSound;
+                    
+                    colorSound.play();
+                    colorSound.onended = () => {
+                        setTimeout(() => transitionTo('INIT'), 2000);
+                    };
+                    
+                    
+                };
+                
+            }  
         }
-    }
+    },
+    
 };
-
+function initializeGame() {
+    renderBoard();
+    transitionTo('INIT');
+    
+    
+    // Añadimos el event listener para el botón de reinicio
+    document.getElementById('restartButton').addEventListener('click', () => {
+        transitionTo('INIT');
+    });
+}
 // Cambiar de estado
 function transitionTo(newState) {
     console.log(`Transición de estado: ${currentState} -> ${newState}`);
@@ -86,7 +101,7 @@ function dropPiece(col) {
                 renderBoard();
                 setTimeout(() => {
                     transitionTo('CHECK_WINNER');
-                }, 10); // Retraso para pintar la celda correctamente
+                }, 10); // Delay para pintar la celda correctamente
             });
             return;
         }
@@ -193,13 +208,13 @@ function checkWinner() {
     return false; // No hay ganador
 }
 
-// Reiniciar tablero
+
 function resetBoard() {
     board = Array.from({ length: 6 }, () => Array(7).fill(null));
     renderBoard();
 }
 
-// Renderizar tablero
+
 function renderBoard() {
     const container = document.getElementById('board');
     container.innerHTML = '';
@@ -215,10 +230,23 @@ function renderBoard() {
     });
 }
 
-// Iniciar el juego
-transitionTo('INIT');
+function showTurnMessage(message) {
+    const turnIndicator = document.getElementById('turn-indicator');
 
-// Selecciona el botón de reinicio
-document.getElementById('restartButton').addEventListener('click', () => {
-    transitionTo('INIT');
-});
+    // Reinicia animacion
+    turnIndicator.style.animation = 'none';
+    setTimeout(() => {
+        turnIndicator.style.animation = '';
+    }, 10);
+
+    turnIndicator.textContent = message;
+    turnIndicator.style.display = 'block';
+
+    // timer de 4 seg
+    setTimeout(() => {
+        turnIndicator.style.display = 'none';
+    }, 4000);
+}
+
+
+

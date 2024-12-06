@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Conecta4</title>
         <link rel="stylesheet" href="style.css">
-        <audio id="winnerSound" src="winnerSound.wav" preload="auto"></audio>
+       
     </head>
     <body>
         <!-- Contenedor de inicio de sesión -->
@@ -31,7 +31,11 @@
                 <button id="restartButton">Reset</button>
             </div>
         </div>
-        <script src="login.js"></script>
+        <audio id="winnerSound" src="winnerSound.wav" preload="auto"></audio>
+        <audio id="redSound" src="red.wav" preload="auto"></audio>
+        <audio id="yellowSound" src="yellow.wav" preload="auto"></audio>
+        <div id="turn-indicator" style="display: none;"></div>
         <script src="logic.js"></script>
+        <script src="login.js"></script>
     </body>
 </html>
