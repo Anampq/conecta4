@@ -287,10 +287,10 @@ function showTurnMessage(message) {
     turnIndicator.textContent = message;
     turnIndicator.style.display = 'block';
 
-    // timer de 4 seg
+    // timer de 6 seg
     setTimeout(() => {
         turnIndicator.style.display = 'none';
-    }, 4000);
+    }, 6000);
 }
 
 function endGame() {
