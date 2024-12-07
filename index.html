@@ -6,6 +6,8 @@
         <title>Conecta4</title>
         <link rel="stylesheet" href="style.css">
        
+        <audio id="empateSound" src="sounds/empate_sound.mp3" preload="auto"></audio>
+        <audio id="fichaSound" src="sounds/fichaCaidaSound.mp3" preload="auto"></audio>
     </head>
     <body>
         <!-- Contenedor de inicio de sesión -->
@@ -31,9 +33,9 @@
                 <button id="restartButton">Reset</button>
             </div>
         </div>
-        <audio id="winnerSound" src="winnerSound.wav" preload="auto"></audio>
-        <audio id="redSound" src="red.wav" preload="auto"></audio>
-        <audio id="yellowSound" src="yellow.wav" preload="auto"></audio>
+        <audio id="winnerSound" src="sounds/winnerSound.wav" preload="auto"></audio>
+        <audio id="redSound" src="sounds/red.wav" preload="auto"></audio>
+        <audio id="yellowSound" src="sounds/yellow.wav" preload="auto"></audio>
         <div id="turn-indicator" style="display: none;"></div>
         <script src="logic.js"></script>
         <script src="login.js"></script>
