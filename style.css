@@ -1,3 +1,4 @@
+/* Containers ocultos y visibles */
 #game-container {
     display: none; /* Oculto*/
 }
@@ -6,15 +7,16 @@
     display: flex; /* Visible*/
 }
 
+/* Estilo global */
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: white;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 h1 {
@@ -22,7 +24,7 @@ h1 {
     margin: 20px 0;
 }
 
-/* Board styles */
+/* Estilo del tablero */
 #board {
     display: grid;
     grid-template-columns: repeat(7, 60px);
@@ -40,16 +42,15 @@ h1 {
 }
 
 .cell {
+    position: relative;
     width: 50px;
     height: 50px;
     border: 1px solid #ccc;
     border-radius: 50%;
     background-color: transparent;
-    transition: background-color 0.3s;
-    cursor: pointer;
-    position: relative;
-    transition: transform 0.2, background-color 0.3 ease;
     box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: transform 0.2, background-color 0.3 ease;
 }
 
 .cell:hover {
@@ -58,10 +59,10 @@ h1 {
 }
 
 .piece {
+    position: absolute;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    position: absolute;
 }
 
 @keyframes zoomIn {
@@ -73,7 +74,32 @@ h1 {
     }
 }
 
-/* Restart button styles*/
+/* Indicador de turno */
+#turn-indicator {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000; /* Asegura que esté encima de otros elementos */
+    animation: fadeOut 4s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1; 
+    }
+    100% { 
+        opacity: 0;
+    }
+}
+
+/* Estilo botón de reinicio */
 #controls {
     display: flex;
     justify-content: center;
@@ -114,19 +140,19 @@ h1 {
     }
 }
 
-/* Centrar el contenedor de login */
+/* Estilo del contenedor de login */
 #login-container {
-    flex: 1;
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 100vh; /* Ocupa toda la altura de la ventana */
-    background-color: #f5f5f5; /* Fondo claro */
+    flex: 1;
+    height: 100vh;
+    background-color: #f5f5f5;
     max-width: 400px;
 }
 
-/* Estilo del formulario */
+/* Estilo del formulario de login */
 #login-form {
     display: flex;
     flex-direction: column;
@@ -151,7 +177,7 @@ h1 {
 /* Estilo para el botón "Entrar" (ya existente, pero integrado aquí) */
 #login-form button {
     padding: 10px;
-    background-color: #007bff; /* Mismo color que el botón Reset */
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
@@ -162,7 +188,7 @@ h1 {
 }
 
 #login-form button:hover {
-    background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+    background-color: #0056b3;
 }
 
 /* Estilo para el mensaje de error */
@@ -170,24 +196,4 @@ h1 {
     margin-top: 10px;
     font-size: 14px;
     color: red;
-}
-
-#turn-indicator {
-    position: fixed; /* Fijo para centrarlo en la ventana */
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centrar en ambas direcciones */
-    padding: 15px 30px;
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semi-transparente */
-    color: white;
-    font-size: 20px;
-    border-radius: 10px;
-    text-align: center;
-    z-index: 1000; /* Asegura que esté encima de otros elementos */
-    animation: fadeOut 4s forwards; /* Cambia a 4 segundos para desaparecer */
-}
-
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
 }

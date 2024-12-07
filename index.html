@@ -4,10 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Conecta4</title>
+
+        <!-- CSS -->
         <link rel="stylesheet" href="style.css">
-       
-        <audio id="empateSound" src="sounds/empate_sound.mp3" preload="auto"></audio>
-        <audio id="fichaSound" src="sounds/fichaCaidaSound.mp3" preload="auto"></audio>
     </head>
     <body>
         <!-- Contenedor de inicio de sesión -->
@@ -33,10 +32,18 @@
                 <button id="restartButton">Reset</button>
             </div>
         </div>
+
+        <!-- Audios -->
         <audio id="winnerSound" src="sounds/winnerSound.wav" preload="auto"></audio>
+        <audio id="empateSound" src="sounds/empate_sound.mp3" preload="auto"></audio>
         <audio id="redSound" src="sounds/red.wav" preload="auto"></audio>
         <audio id="yellowSound" src="sounds/yellow.wav" preload="auto"></audio>
+        <audio id="fichaSound" src="sounds/fichaCaidaSound.mp3" preload="auto"></audio>
+
+        <!-- Indicador de turno -->
         <div id="turn-indicator" style="display: none;"></div>
+
+        <!-- JavaScripts -->
         <script src="logic.js"></script>
         <script src="login.js"></script>
     </body>
