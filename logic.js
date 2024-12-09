@@ -81,6 +81,7 @@ const gameStates = {
     },
 };
 
+// Inicializar el juego
 function initializeGame() {
     resetBoard();
     currentPlayer = 'R';
@@ -177,7 +178,6 @@ function animatePiece(row, col, player, callback) {
             pieceDiv.style.top = `${currentY}px`;
             requestAnimationFrame(animate);
         } else {
-            // Finaliza la animación
             pieceDiv.style.top = `${endY}px`;
             callback();
             pieceDiv.remove();
@@ -254,12 +254,14 @@ function checkWinner() {
     return false; // El juego continua
 }
 
+// Reiniciar tablero
 function resetBoard() {
     board = Array.from({ length: 6 }, () => Array(7).fill(null));
     renderBoard();
     console.log('El juego ha sido reiniciado');
 }
 
+// Renderizar tablero
 function renderBoard() {
     const container = document.getElementById('board');
     container.innerHTML = '';
@@ -275,6 +277,7 @@ function renderBoard() {
     });
 }
 
+// Mostrar mensaje de turno
 function showTurnMessage(message) {
     const turnIndicator = document.getElementById('turn-indicator');
 
@@ -293,8 +296,9 @@ function showTurnMessage(message) {
     }, 6000);
 }
 
+// Finalizar juego
 function endGame() {
-    document.getElementById('game-container').style.display = 'none';   // Ocultar el juego
-    document.getElementById('login-container').style.display = 'block'; // Mostrar el login
+    document.getElementById('game-container').style.display = 'none';
+    document.getElementById('login-container').style.display = 'block';
     resetGame();
 }
