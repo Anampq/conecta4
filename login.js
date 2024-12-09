@@ -4,7 +4,10 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    if (username === 'atenea' && password === 'atenea') {
+    if (
+        (username === 'atenea' && password === 'atenea') ||
+        (username === 'admin' && password === 'admin123')
+    ) {
         // Ocultar el contenedor de login y mostrar el juego
         document.getElementById('login-container').style.display = 'none';
         document.getElementById('game-container').style.display = 'block';
