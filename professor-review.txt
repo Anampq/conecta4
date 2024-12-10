@@ -1,0 +1,6 @@
+Notas del profesor:
+- Tamany no escalable, millor que sigui escalable
+- Es fa servir una FSM (Finite State Machine) per a la implementació de la funcionalitat de la màquina. No es necessari perquè els estats bàsicament estan en seqüència.
+- Sembla més interessant fer el joc en xarxa que no pas l'animació
+- La funció checkWinner no es gaire bé escalable, pensar una forma de trobar una línea de longitud determinada en una matriu
+- Es preferible innerHTML a appendChild
