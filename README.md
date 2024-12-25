@@ -63,7 +63,7 @@ Hemos añadido sonidos específicos para eventos clave, como colocar una ficha, 
 El juego continuará de la siguiente manera:
 
 1. **Inicio**: El jugador rojo comenzará el juego, por lo que el primer mensaje que verán será el mensaje "AHORA ES EL TURNO DE ROJO".
-2. **Turnos**: Ambos jugadores hacen click en las columnas del tablero para colocar una ficha en la posición más baja disponible. Después de cada movimiento, el turno pasa al otro jugador.
+2. **Turnos**: Uno de los jugadores debe de hacer click en las columnas del tablero para colocar una ficha en la posición más baja disponible. Después de cada movimiento, el turno pasa al otro jugador.
 3. **Condiciones de victoria**: Por cada turno, el juego calcula si hay algún ganador (mira si hay 4 fichas seguidas del mismo color en horizontal, vertical o diagonal) o algún empate (en caso que el tablero esté lleno y no haya ganador).
 4. **Reinicio**: Os damos la opción de elegir reiniciar el juego desde el botón "Reiniciar".
 
